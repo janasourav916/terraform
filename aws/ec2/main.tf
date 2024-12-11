@@ -20,10 +20,13 @@ locals {
 resource "aws_s3_bucket" "terraform_state" {
   # With account id, this S3 bucket name can be *globally* unique.
   bucket = "${local.account_id}-terraform-states"
+}
 
-  # Enable versioning so we can see the full revision history of our state files.
-  versioning {
-    enabled = true
+resource "aws_s3_bucket_versioning" "terraform_state" {
+  bucket = aws_s3_bucket.terraform_state.bucket
+
+  versioning_configuration {
+    status = "Enabled"
   }
 }
 
@@ -45,6 +48,7 @@ resource "aws_s3_bucket_public_access_block" "terraform_state" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
 
 # ------------------------------------------------------------------------------
 # CREATE THE DYNAMODB TABLE
