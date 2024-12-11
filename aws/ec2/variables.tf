@@ -7,3 +7,13 @@ variable "instance" {
   type = string
   default = "t2.micro"
 } 
+
+variable "bucket" {
+  type = string
+  default = "sjana-terraform-states"
+}
+
+variable "key" {
+  type = string
+  default = "create-ec2/terraform.tfstate"
+}
