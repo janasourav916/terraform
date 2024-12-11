@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = var.bucket
-    key    = var.key
+    bucket = "sjana-terraform-states"
+    key    = "create-ec2/terraform.tfstate"
     region = "ap-south-1"
   }
 }
