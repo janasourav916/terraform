@@ -4,8 +4,8 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.16"
     }
-    required_version = ">= 0.12"
   }
+  required_version = ">= 0.12"
 }
 
 # Configure the AWS Provider
